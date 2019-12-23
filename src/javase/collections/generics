@@ -1,0 +1,13 @@
+
+
+# unbounded wildcard -> ?
+    - List<?> list -> means telling the compiler that we have no idea of what the type is
+    - we can read from it as object, but can't write to it
+    - List<?> list = Arrays.asList("Hello", LocalDate.now(), 3)
+    - list.size() or list.forEach(Consumer) will work but list.add(...) will not
+    - In the List<E> interface we have: boolean containsAll(Collection<?> c)
+    - So List<?> only allowed methods are the methods that don't need type or methods from Object class
+
+
+# upper-bounded wildcard -> ? extends SomeClass
+    - can define, can read but can't add

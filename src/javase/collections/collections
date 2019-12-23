@@ -1,0 +1,71 @@
+Object is top level generalization from java.lang.Object
+
+Collection<E> -> Interface
+
+interface Collection<E> extends Iterable<E>
+
+Sub-interfaces of collection -> more generalised, represents common behaviors
+    Deque<E>
+    List<E>
+    NavigableSet<E>
+    Queue<E>
+    Set<E>
+    SortedSet<E>
+    TransferQueue<E>
+All general purpose classes, implementing the sub-interfaces provides two constructors
+a void constructor and a constructor with a single argument of type Collection. But there is
+no way to enforce, but all of general purpose collection impl comply.
+
+unsupported methods of Collection interface classes throw an UnsupportedOperationException
+like for all unmodifiable collection throws if alter methods called
+
+contains -> uses equals method for check
+
+
+Subinterfaces
+    List<E> -> Collection<E>
+    - position based, order maintained
+    Set<E> -> Collection<E>
+    - does not maintained the order, rejects duplicates
+    - just add symantic for rejecting
+
+java.lang.Iterable <- defines method iterator() which returns a Iterator
+
+interface -> Iterator<E> -> Note: takes place of Enumeration in java Collection framework,
+                            Enumeration does not allow to remove element.
+                            Well known impl of Enumeration<E> is StringTokenizer with two methods
+                                - boolean hasMoreElements()
+                                - nextElement()
+    - methods
+    - default void forEachRemaining(Consumer<? super E> action)
+    - boolean hasNext()
+    - E next()
+    - default void remove() -> optional operation(might throw exception)
+
+Collection implements Iterable which has a method to return Iterator, because if Collection
+implements its own Iterator then it would be difficult to track progress if multiple clients
+are using same Iterator.
+
+Map<K, V> -> does not inherit Collection interface
+    - map doesn't contain duplicate keys
+    - HashMap, TreeMap, HashTable, EnumMap, SortedMap, LinkedHashMap
+    - it also have a inner interface Map.Entry<K, V> -> a map entry (key value pair)
+
+
+# Generics
+    - its impl uses same interface but adds respective checks at runtime, get methods still
+        return Object, but it is internally cast by compiler, hence type safety in maintained
+        and source code is more robust, in essence source code is aware of typing rule apply
+        to, but not runtime -> Type Eraser
+
+TIP: javac -d /tmp -Xlint /folder/file.java -> for compiler warning using command line
+
+# ListIterator<E> extends Iterator<E>
+    - allow to traverse the list in either direction,  A ListIterator has no current element;
+      its cursor position always lies between the element that would be returned by a call to previous() and the element that would be returned by a call to next().
+      An iterator for a list of length n has n+1 possible cursor positions
+    - hasNext(), next(), nextIndex()
+    - hasPrevious(), previous(), previousIndex()
+
+    Tip: passing size of the list as argument of listIterator traverses from end, lst.listIterator(lst.size())
+   - more efficient then linkedList for adding multiple items in list, because ListIterator keeps track of positions.

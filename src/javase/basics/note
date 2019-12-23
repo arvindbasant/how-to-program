@@ -1,0 +1,26 @@
+
+# SOLID design principle
+    - S ->
+    - O ->
+    - L ->
+    - I ->
+    - D ->
+
+
+# Class
+    - Class is used to defined shape and nature of object. So Class is the blueprint of Object.
+    - Any logic or behaviour we wish to implement should be encapsulated within the class.
+    - Object -> object is the instance of class.
+    - Class defines a new data type, known as User Defined Data Type.
+    - The data, or variables, defined within a class are called instance variables.
+    - Collectively, the methods and variables defined within a class are called members of the class.
+    - Variables defined within a class are called instance variables because each
+      instance of the class (that is, each object of the class) contains its own copy of
+      these variables.
+
+
+# Data Type -> Primitive and User Defined
+    - Primitive -> Value type
+    - User Defined -> Reference Type
+
+# this keyword always refers to current instance of object
