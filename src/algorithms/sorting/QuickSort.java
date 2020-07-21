@@ -35,10 +35,10 @@ public class QuickSort {
     }
 
     private void recQuickSort(int left, int right) {
-        if (right - left <= 0) // pointer crossed
+        if (left >= right) // pointer crossed
             return;
         else {
-            int pivot = arr[right];
+            int pivot = arr[right]; // take last elem as pivot
             int partition = partitionIt(left, right, pivot);
             recQuickSort(left, partition - 1);
             recQuickSort(partition + 1, right);

@@ -7,10 +7,8 @@ import java.util.Stack;
 public class BinaryTree {
 
     public class Node {
-
         Node leftChild;
         Node rightChild;
-
         int key;
 
         public Node(int key) {
@@ -71,7 +69,6 @@ public class BinaryTree {
             return current;
         }
     }
-
 
     public int size(Node root) {
         if (root == null)
@@ -255,7 +252,7 @@ public class BinaryTree {
             return 0;
         int leftHeight = height(root.leftChild) + 1;
         int rightHeight = height(root.rightChild) + 1;
-        return leftHeight > rightHeight ? leftHeight : rightHeight;
+        return Math.max(leftHeight, rightHeight);
     }
 
     public void printGivenLevel(Node root, int level) {
@@ -281,7 +278,7 @@ public class BinaryTree {
         Stack<Node> s1 = new Stack<>();
         Stack<Node> s2 = new Stack<>();
         s1.push(root);
-        while (!s1.isEmpty() || !s2.isEmpty()) {
+        while (!s1.isEmpty()) {
             while (!s1.isEmpty()) {
                 Node temp = s1.pop();
                 if (temp.leftChild != null)
@@ -300,6 +297,7 @@ public class BinaryTree {
             }
         }
     }
+
     static int max_level = 0;
 
     public void printLeftView(Node root, int level) {
@@ -316,7 +314,7 @@ public class BinaryTree {
     private int distanceFromRoot(Node root, int x) {
         if (root.key == x)
             return 0;
-        if (root.key > x)
+        if (x < root.key)
             return distanceFromRoot(root.leftChild, x) + 1;
         return distanceFromRoot(root.rightChild, x) + 1;
     }
@@ -339,13 +337,13 @@ public class BinaryTree {
         int counter = k;
         Stack<Node> stack = new Stack<>();
         while (!stack.isEmpty() || current != null) {
-            if(current != null) { // first add only left children
+            if (current != null) { // first add only left children
                 stack.add(current);
                 current = current.leftChild;
-            }else { // pop left children, if counter becomes 0, then print otherwise set right children
+            } else { // pop left children, if counter becomes 0, then print otherwise set right children
                 current = stack.pop();
                 counter--;
-                if(counter == 0) {
+                if (counter == 0) {
                     current.show();
                     return;
                 }
@@ -362,11 +360,8 @@ public class BinaryTree {
         Vector<Integer> list = m.get(hd);
         if (list == null) {
             list = new Vector<>();
-            list.add(root.key);
-        } else {
-            list.add(root.key);
         }
-
+        list.add(root.key);
         m.put(hd, list);
 
         getVerticalOrder(root.leftChild, hd - 1, m);
@@ -417,20 +412,19 @@ public class BinaryTree {
     }
 
     // find max value less than or eq to n
-    static int findMaxforN(Node root, int n) {
+    static int findMaxForN(Node root, int n) {
         if (root == null)
             return -1;
         if (root.key == n)
             return root.key;
         else if (root.key < n) {
-            int k = findMaxforN(root.rightChild, n);
+            int k = findMaxForN(root.rightChild, n);
             if (k == -1)
                 return root.key;
             else
                 return k;
-        } else if (root.key > n)
-            return findMaxforN(root.leftChild, n);
-        return -1;
+        } else
+            return findMaxForN(root.leftChild, n);
     }
 
 

@@ -1,6 +1,6 @@
-package misc;
+package dynamicProgramming;
 
-class GoldMineProblem {
+public class GoldMine {
     private static int getMaxGold(int[][] gold) {
         int row = gold.length;
         int col = gold[0].length;

@@ -1,0 +1,7 @@
+
+# There are two ways to store the values, so that stored value of sub-problem can be reused.
+    1. Tabulation -> Bottom Up -> starting from bottom and cumulating value to top.
+    2. Memoization -> Top Down
+
+
+    01242801000 - 3300

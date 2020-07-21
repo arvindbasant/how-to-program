@@ -50,15 +50,15 @@ public class ArrayProblems {
         return true;
     }
 
-    public int maxContinuous1s(int nums[]) {
+    public int maxContinuous1s(int[] nums) {
         int count = 0;
         int max = 0;
-        for (int i = 0; i < nums.length; i++) {
-            if (nums[i] == 0)
+        for (int num : nums) {
+            if (num == 0)
                 count = 0;
             else
                 count++;
-            max = count > max ? count : max;
+            max = Math.max(count, max);
         }
         return max;
     }
@@ -67,6 +67,7 @@ public class ArrayProblems {
 
     }
 
+    // TC: O(m + n)
     public void rowWithMax1sInSortedMatrix(int[][] bMatrix) {
 
         int rowLength = bMatrix.length;
@@ -86,16 +87,90 @@ public class ArrayProblems {
 
     }
 
+    private int minElemInSortedRotedArray(int[] arr, int low, int high) {
+        // [4, 5, 6, 7, 1, 2, 3]
+        if (high < low) // no rotation
+            return arr[0];
+
+        if (low == high) // only one left
+            return arr[low];
+
+        int mid = (low + high) / 2;
+
+        if (mid < high && arr[mid + 1] < arr[mid]) // min next to mid {3, 4, 5, 1, 2}
+            return arr[mid + 1];
+
+        // Check if mid itself is minimum element
+        if (mid > low && arr[mid] < arr[mid - 1])
+            return arr[mid];
+
+        if (arr[mid] > arr[mid - 1])
+            return minElemInSortedRotedArray(arr, mid + 1, high);
+        return minElemInSortedRotedArray(arr, low, mid - 1);
+    }
+
+    private void rotateArrayByNElem(int[] arr, int d, int n) {
+
+        if(arr.length == 0)
+            return;
+
+        // use temp array for TC:O(1)
+        // TC: O(n*d)
+        for (int i = 0; i < d; i++) {
+            int temp = arr[0];
+            for (int j = 1; j < n; j++) {
+                arr[j - 1] = arr[j];
+            }
+            arr[n - 1] = temp;
+        }
+        Arrays.stream(arr).forEach(System.out::println);
+    }
+
+    int gcd(int a, int b) {
+        if (b == 0)
+            return a;
+        return gcd(b, a % b);
+    }
+
+    private void rotateArrayByNElemUsingJugglingAlgorithm(int[] arr, int d, int n) {
+        // 1, 2, 3 - 4, 5, 6 - 7, 8, 9 - 10, 11, 12
+        int gcd = gcd(d, n); // 3
+        for (int i = 0; i < gcd; i++) {
+            int first = arr[i];
+            int j = i;
+            while (true) {
+                int k = j + d;
+                if (k >= n)
+                    k = k - n;
+                if (k == i)
+                    break;
+                arr[j] = arr[k];
+                j = k;
+            }
+            arr[j] = first;
+        }
+        Arrays.stream(arr).forEach(System.out::println);
+    }
+
+    void print3LargestNoOfArray(int[] arr, int size) {
+
+    }
 
 
     public static void main(String[] args) {
         ArrayProblems ap = new ArrayProblems();
-        System.out.println(ap.isAnagram("hello", "olelh"));
-        System.out.println(ap.isAnagram2("hello", "olelh"));
-        System.out.println(ap.isPalindrome("abba"));
+//        System.out.println(ap.isAnagram("hello", "olelh"));
+//        System.out.println(ap.isAnagram2("hello", "olelh"));
+//        System.out.println(ap.isPalindrome("madam"));
+//        System.out.println(ap.maxContinuous1s(new int[]{1, 0, 1, 1, 1, 0}));
+//
+//        int[][] bMatrix = {{0, 0, 0, 1}, {0, 1, 1, 1}, {0, 0, 1, 1}, {0, 0, 0, 1}};
+//        ap.rowWithMax1sInSortedMatrix(bMatrix);
+//
+//        System.out.println("minElemInSortedRotedArray" + ap.minElemInSortedRotedArray(new int[]{4, 5, 1, 2, 3}, 0, 4));
 
-        int[][] bMatrix = {{0, 0, 0, 1}, {0, 1, 1, 1}, {0, 0, 1, 1}, {0, 0, 0, 1}};
-        ap.rowWithMax1sInSortedMatrix(bMatrix);
+        ap.rotateArrayByNElem(new int[]{1, 2, 3, 4, 5, 6}, 2, 6);
+//        ap.rotateArrayByNElemUsingJugglingAlgorithm(new int[]{1, 2, 3, 4, 5, 6}, 2, 6);
 
     }
 }

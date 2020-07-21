@@ -72,10 +72,9 @@ public class LinkedList {
     }
 
     public int length(Link link) {
-        Link current = link;
-        if (current == null)
+        if (link == null)
             return 0;
-        return 1 + length(current.next);
+        return 1 + length(link.next);
     }
 
     public Link getNthNode(Link first, int n) {

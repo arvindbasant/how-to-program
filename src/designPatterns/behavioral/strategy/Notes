@@ -1,0 +1,3 @@
+The Strategy pattern is the process of disassociating an algorithm from its host and enabling the ability to swap algorithms dynamically at run time.
+
+The Strategy pattern encapsulates algorithms as objects. Clients reference them by an abstract or interface, which enables them to be interchangeable.

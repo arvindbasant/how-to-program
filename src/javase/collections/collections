@@ -22,7 +22,7 @@ like for all unmodifiable collection throws if alter methods called
 contains -> uses equals method for check
 
 
-Subinterfaces
+SubInterfaces
     List<E> -> Collection<E>
     - position based, order maintained
     Set<E> -> Collection<E>
