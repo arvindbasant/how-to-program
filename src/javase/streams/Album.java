@@ -120,7 +120,7 @@ public class Album {
 //                        .count());
             case "3":
                 System.out.println("Arvind".chars()
-                        .filter(c -> Character.isLowerCase(c))
+                        .filter(Character::isLowerCase)
                         .count());
                 break;
             case "4":
@@ -131,9 +131,9 @@ public class Album {
 //                Optional<String> result = strings.stream().map(str -> str.chars().filter(c -> Character.isLowerCase(c))).max(Comparator.comparing(str -> str.count()));
 
                 System.out.println(strings.stream()
-                        .min(Comparator.comparing(str -> str.length())).get());
+                        .min(Comparator.comparing(String::length)).get());
                 System.out.println(strings.stream()
-                        .max(Comparator.comparing(str -> str.chars().filter(c -> Character.isLowerCase(c)).count())).get());
+                        .max(Comparator.comparing(str -> str.chars().filter(Character::isLowerCase).count())).get());
                 album.getTracks()
                         .stream()
                         .mapToInt(track -> track.length)

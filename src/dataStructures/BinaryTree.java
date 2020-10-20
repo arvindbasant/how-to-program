@@ -6,7 +6,7 @@ import java.util.Stack;
 
 public class BinaryTree {
 
-    public class Node {
+    public static class Node {
         Node leftChild;
         Node rightChild;
         int key;

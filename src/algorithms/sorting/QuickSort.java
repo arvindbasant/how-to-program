@@ -2,7 +2,7 @@ package algorithms.sorting;
 
 public class QuickSort {
 
-    private int[] arr;
+    private final int[] arr;
 
     QuickSort(int[] arr) {
         this.arr = arr;
@@ -24,7 +24,7 @@ public class QuickSort {
             while (rightPtr > 0 && arr[--rightPtr] > pivot)
                 ;
 
-            if(leftPtr >= rightPtr)
+            if (leftPtr >= rightPtr)
                 break;
             else
                 swap(leftPtr, rightPtr);
@@ -35,9 +35,8 @@ public class QuickSort {
     }
 
     private void recQuickSort(int left, int right) {
-        if (left >= right) // pointer crossed
-            return;
-        else {
+        // pointer crossed check
+        if (left < right) {
             int pivot = arr[right]; // take last elem as pivot
             int partition = partitionIt(left, right, pivot);
             recQuickSort(left, partition - 1);
@@ -53,7 +52,7 @@ public class QuickSort {
         int[] input = {23, 32, 11, 78, 36, 9, 54, 8, 1, 3};
         QuickSort qs = new QuickSort(input);
         qs.sort();
-        for (int n: input) {
+        for (int n : input) {
             System.out.println(n);
         }
     }

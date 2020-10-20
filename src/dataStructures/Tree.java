@@ -257,34 +257,34 @@ class Tree {
 //        bst.insert(25);
 //        bst.insert(35);
 //
-////        bst.traverse(1);
-////        System.out.println();
-////        bst.traverse(2);
-////        System.out.println();
-////        bst.traverse(3);
-////        System.out.print("min: ");
-////        bst.findMin(bst.root);
-////        System.out.println("level order ");
-////        bst.levelOrderTraversal(bst.root);
-////        System.out.println("spiral order ");
-////        bst.printSpiralOrder(bst.root);
-////
-////        System.out.println("LCA");
-////        bst.LCA(bst.root, 10, 14).display();
-////        System.out.println("LCA_Iterative");
-////        bst.LCA_Iterative(bst.root, 10, 14).display();
-////
-////        System.out.println("printKthSmallestElement");
-////        bst.printKthSmallestElement(bst.root, 3);
-////
-////        System.out.println("size:" + bst.size(bst.root));
-////        System.out.println("height" + bst.height(bst.root));
-////        System.out.println("--Level Order--");
-////        bst.printLevelOrder(bst.root);
-////        System.out.println("--Left Order--");
-////        bst.printLeftView(bst.root, 1);
-////        System.out.println("--Vertical Order--");
-////        bst.printVerticalOrder(bst.root);
+//        bst.traverse(1);
+//        System.out.println();
+//        bst.traverse(2);
+//        System.out.println();
+//        bst.traverse(3);
+//        System.out.print("min: ");
+//        bst.findMin(bst.root);
+//        System.out.println("level order ");
+//        bst.levelOrderTraversal(bst.root);
+//        System.out.println("spiral order ");
+//        bst.printSpiralOrder(bst.root);
+//
+//        System.out.println("LCA");
+//        bst.LCA(bst.root, 10, 14).display();
+//        System.out.println("LCA_Iterative");
+//        bst.LCA_Iterative(bst.root, 10, 14).display();
+//
+//        System.out.println("printKthSmallestElement");
+//        bst.printKthSmallestElement(bst.root, 3);
+//
+//        System.out.println("size:" + bst.size(bst.root));
+//        System.out.println("height" + bst.height(bst.root));
+//        System.out.println("--Level Order--");
+//        bst.printLevelOrder(bst.root);
+//        System.out.println("--Left Order--");
+//        bst.printLeftView(bst.root, 1);
+//        System.out.println("--Vertical Order--");
+//        bst.printVerticalOrder(bst.root);
 //        System.out.println("--distanceBetween2Nodes--");
 //        System.out.println(bst.distanceBetween2Nodes(bst.root, 10, 5));
 //    }

@@ -27,7 +27,7 @@ SubInterfaces
     - position based, order maintained
     Set<E> -> Collection<E>
     - does not maintained the order, rejects duplicates
-    - just add symantic for rejecting
+    - just add semantics for rejecting
 
 java.lang.Iterable <- defines method iterator() which returns a Iterator
 

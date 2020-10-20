@@ -1,7 +1,7 @@
 package algorithms.sorting;
 
 public class SelectionSort {
-    private int[] arr;
+    private final int[] arr;
 
     SelectionSort(int[] arr) {
         this.arr = arr;

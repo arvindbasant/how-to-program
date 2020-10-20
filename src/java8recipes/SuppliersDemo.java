@@ -24,5 +24,6 @@ public class SuppliersDemo {
         randomSupplier = () -> Math.random();
         randomSupplier = Math::random;
         logger.info(() -> "hello");
+        logger.info(String.valueOf(randomSupplier.getAsDouble()));
     }
 }
