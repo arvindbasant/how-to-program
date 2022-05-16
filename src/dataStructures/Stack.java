@@ -31,5 +31,4 @@ public class Stack {
         return top == maxSize - 1;
     }
 
-
 }

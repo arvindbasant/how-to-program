@@ -1,7 +1,6 @@
 package designPatterns.behavioral.state;
 
 public interface OrderState {
-
     boolean canShip(Order order);
     void ship(Order order);
 
@@ -9,5 +8,4 @@ public interface OrderState {
     void cancel(Order order);
 
     OrderStatus getStatus();
-
 }

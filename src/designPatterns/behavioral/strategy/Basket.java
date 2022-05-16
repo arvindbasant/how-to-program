@@ -1,6 +1,16 @@
 package designPatterns.behavioral.strategy;
 
 public class Basket {
+    private final BasketDiscountStrategy basketDiscountStrategy;
+
+    Basket(DiscountType discountType) {
+        basketDiscountStrategy = BasketDiscountFactory.getDiscount(discountType);
+    }
+
+    public double getTotalCostAfterDiscount() {
+        return basketDiscountStrategy.getTotalCostAfterApplyingDiscountTo(this);
+    }
+
     private double totalCost;
 
     public double getTotalCost() {
@@ -11,3 +21,4 @@ public class Basket {
         this.totalCost = totalCost;
     }
 }
+

@@ -186,6 +186,23 @@ public class BinaryTree {
         }
     }
 
+    private void inOrderIterative(Node root) {
+        if (root == null)
+            return;
+
+        Stack<Node> s = new Stack<>();
+        Node current = root;
+        while (current != null || s.size() > 0) {
+            while (current != null) {
+                s.push(current);
+                current = current.leftChild;
+            }
+            current = s.pop();
+            current.show();
+            current = current.rightChild;
+        }
+    }
+
     private void preOrder(Node root) {
         if (root != null) {
             root.show();
@@ -427,6 +444,35 @@ public class BinaryTree {
             return findMaxForN(root.leftChild, n);
     }
 
+    public void morrisTraversal(Node root) {
+        Node current, pre;
+        if(root == null)
+            return;
+
+        current = root;
+        while (current != null) {
+            if(current.leftChild == null) {
+                current.show();
+                current = current.rightChild;
+            } else {
+                // find the in-order predecessor of current
+                pre = current.leftChild;
+                while (pre.rightChild != null && pre.rightChild != current)
+                    pre = pre.rightChild;
+
+                if(pre.rightChild == null) {
+                    pre.rightChild = current;
+                    current = current.leftChild;
+                } else {
+                    // there is a cyclic link and the left part already traversed, re-store the tree
+                    pre.rightChild = null;
+                    current.show();
+                    current = current.rightChild; // current set back to top
+                }
+            }
+        }
+    }
+
 
     public static void main(String[] args) {
          /*
@@ -445,12 +491,12 @@ public class BinaryTree {
         bst.insert(25);
         bst.insert(35);
 
-//        bst.traverse(1);
-//        System.out.println();
-//        bst.traverse(2);
-//        System.out.println();
-//        bst.traverse(3);
-        System.out.print("min: ");
+        bst.traverse(1);
+        System.out.println();
+        bst.traverse(2);
+        System.out.println();
+        bst.traverse(3);
+        System.out.println("min: ");
         bst.findMin(bst.root);
         System.out.println("level order ");
         bst.levelOrder(bst.root);
@@ -470,13 +516,19 @@ public class BinaryTree {
         System.out.println("--Level Order--");
         bst.printLevelOrder(bst.root);
         System.out.println("--Left Order--");
-//        bst.printLeftView(bst.root, 1);
+        bst.printLeftView(bst.root, 1);
         System.out.println("--Vertical Order--");
 //        bst.printVerticalOrder(bst.root);
         System.out.println("--distanceBetween2Nodes--");
         System.out.println(bst.distanceBetween2Nodes(bst.root, 15, 25));
 
         bst.printLeftView(bst.root, 1);
+
+        System.out.println("Morris Traversal");
+        bst.morrisTraversal(bst.root);
+
+        System.out.println("inOrderIterative");
+        bst.inOrderIterative(bst.root);
     }
 
 }

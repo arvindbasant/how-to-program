@@ -17,7 +17,7 @@ public class BinaryGap {
                 }
             }
             return max;
-        } catch (Exception ex) {
+        } catch (Exception ignored) {
         }
         return 0;
     }

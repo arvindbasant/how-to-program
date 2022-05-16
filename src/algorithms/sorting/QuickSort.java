@@ -1,8 +1,7 @@
 package algorithms.sorting;
 
 public class QuickSort {
-
-    private final int[] arr;
+    final int[] arr;
 
     QuickSort(int[] arr) {
         this.arr = arr;
@@ -18,42 +17,40 @@ public class QuickSort {
         int leftPtr = left - 1;
         int rightPtr = right;
 
-        while (true) {
-            while (arr[++leftPtr] < pivot)
-                ;
-            while (rightPtr > 0 && arr[--rightPtr] > pivot)
-                ;
+        while(true) {
+            while(arr[++leftPtr] < pivot) // find next bigger
+                ; // nop
+            while(rightPtr > 0 && arr[--rightPtr] > pivot)
+                ; // nop
 
-            if (leftPtr >= rightPtr)
+            if(leftPtr >= rightPtr)
                 break;
-            else
-                swap(leftPtr, rightPtr);
-        }
-        swap(leftPtr, right);
 
+            swap(leftPtr, rightPtr);
+        }
+        swap(leftPtr, right); // restore pivot
         return leftPtr;
     }
 
-    private void recQuickSort(int left, int right) {
-        // pointer crossed check
-        if (left < right) {
-            int pivot = arr[right]; // take last elem as pivot
-            int partition = partitionIt(left, right, pivot);
-            recQuickSort(left, partition - 1);
-            recQuickSort(partition + 1, right);
-        }
+    private void recSort(int left, int right) {
+       if(left < right) {
+           int pivot = arr[right];
+           int partition = partitionIt(left, right, pivot);
+           recSort(left, partition - 1);
+           recSort(partition + 1, right);
+       }
     }
 
     public void sort() {
-        recQuickSort(0, arr.length - 1);
+        recSort(0, arr.length - 1);
     }
 
-    public static void main(String[] args) {
-        int[] input = {23, 32, 11, 78, 36, 9, 54, 8, 1, 3};
-        QuickSort qs = new QuickSort(input);
+    public static void main(String... args) {
+        int[] arr = {1, 12, 8, 5, 19};
+        QuickSort qs = new QuickSort(arr);
         qs.sort();
-        for (int n : input) {
-            System.out.println(n);
-        }
+
+        for(int num : arr)
+            System.out.println(num);
     }
 }

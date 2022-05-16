@@ -2,6 +2,7 @@ package java8.lambdas;
 
 import java.io.File;
 import java.io.FileFilter;
+import java.io.FileInputStream;
 import java.util.Objects;
 
 public class FileFilterLambda {
@@ -15,6 +16,8 @@ public class FileFilterLambda {
         };
 
         FileFilter fileFilterLambda = path -> path.getName().endsWith(".java");
+
+//        FileInputStream fis = new FileInputStream("input.log");
 
         String pathname = "/Users/akumar24/Documents/workspace/how-to-program/src/java8/lambdas";
         File dir = new File(pathname);
